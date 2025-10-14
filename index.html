@@ -16,12 +16,41 @@
         background: #f8f8fa;
         color: #222;
       }
-      h1 { font-size: 2.5rem; }
-      p { font-size: 1.2rem; color: #555; }
+      h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin: 1rem 0 0.5rem;
+      }
+      p {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        color: #555;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      .hero {
+        width: 100%;
+        max-width: 1000px;
+        height: auto;
+        border-radius: 1rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      }
     </style>
   </head>
   <body>
     <h1>Visewerk</h1>
     <p>Welcome to woodworking!</p>
+    <img
+      src="assets/images/hero-1280.webp"
+      srcset="
+        assets/images/hero-640.webp   640w,
+        assets/images/hero-1280.webp 1280w,
+        assets/images/hero-1600.webp 1600w"
+      sizes="(max-width: 600px) 100vw,
+             (max-width: 1200px) 80vw,
+             1000px"
+      alt="Woodworking hero image"
+      class="hero"
+      fetchpriority="high"
+      decoding="sync"
+    />
   </body>
 </html>
