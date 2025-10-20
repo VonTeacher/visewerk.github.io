@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visewerk</title>
     <style>
+      @font-face {
+        font-display: swap;
+        font-family: 'Goudy Bookletter 1911';
+        font-style: normal;
+        font-weight: 400;
+        src: url('/assets/fonts/goudy-bookletter-1911-v21-latin-regular.woff2') format('woff2');
+      }
       body {
-        font-family: system-ui, sans-serif;
+        font-family: 'Goudy Bookletter 1911', serif;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* ← this is centering everything vertically */
-        /* height: 100vh; */
+        justify-content: center;
       }
       h1 {
         font-size: clamp(1.8rem, 5vw, 2.5rem);
@@ -50,7 +56,7 @@
       fetchpriority="high"
       decoding="sync"
     />
-        <img
+    <img
       src="/assets/images/hero_poplar_1280.webp"
       srcset="
         /assets/images/hero_poplar_640.webp   640w,
