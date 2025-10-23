@@ -22,4 +22,17 @@
     </div>
     {% include footer.html %}
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("img").forEach((img) => {
+        if (img.complete) {
+          img.setAttribute("data-loaded", "true");
+        } else {
+          img.addEventListener("load", () => {
+            img.setAttribute("data-loaded", "true");
+          });
+        }
+      });
+    });
+  </script>
 </html>
