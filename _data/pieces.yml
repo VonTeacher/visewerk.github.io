@@ -1,0 +1,35 @@
+- title: Danish Stool
+  material: Poplar, Danish cord
+  year: 2025
+  image: /assets/images/hero_danish_640.webp
+  description: "A low stool in the Danish tradition, shaped entirely with hand tools and finished with black danish cord. From an [English Woodworker plan](https://www.theenglishwoodworker.com/how-to-build-danish-stool/)."
+
+- title: Frame
+  material: Walnut, maple
+  year: 2026
+  image: /assets/images/walnut_frame_640.webp
+  description: A picture frame with a walnut outer and a hand-fitted maple beads and mitred splines.
+
+- title: Veritas Router Plane Storage Box
+  material: Pine, shellac, acrylic
+  year: 2025
+  image: /assets/images/router_plane_storage_640.webp
+  description: "A storage box for a Veritas router plane, blades, and accessories. Based on [Veritas's own storage box](https://www.leevalley.com/en-us/shop/tools/workshop/storage/tool-storage/111192-veritas-router-plane-box)."
+
+- title: Joiner's Toolbox
+  material: Pine, chalk paint
+  year: 2024
+  image: /assets/images/tool_chest_640.webp
+  dsecription: "Another [Paul Sellers design](https://woodworkingmasterclasses.com/videos/joiners-toolbox-project-info/), a reproduction of a simple dovetailed chest. "
+
+- title: Poplar Box
+  material: Poplar, shellac
+  year: 2023
+  image: /assets/images/poplar_box_640.webp
+  description: A colorful walnut box made for a friend.
+
+- title: Paul Sellers Workbench
+  material: Pine
+  year: 2020
+  image: /assets/images/bench_640.webp
+  description: "A class and solid [design](https://paulsellers.com/paul-sellers-workbench-plans/)."

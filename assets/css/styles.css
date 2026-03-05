@@ -66,9 +66,14 @@ header, body > a.nodeco {
   justify-content: space-between;
   align-items: center;
   padding: 2.2rem 3.5rem;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* The h1 logo */
+.site-header.scrolled {
+  background: rgba(250, 248, 244, 0.92);
+  backdrop-filter: blur(8px);
+}
+
 h1 {
   font-family: 'Goudy Bookletter 1911', serif;
   font-size: 1rem;
@@ -247,6 +252,106 @@ body > p, .site-tagline {
 }
 
 .marquee-track span.dot {
+  color: var(--accent);
+}
+
+/* ─── WORK SECTION ─── */
+.section-work {
+  padding: 7rem 3.5rem;
+  width: 100%;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.2rem;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-title {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 3rem;
+}
+
+.work-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.work-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-thumb {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--cream);
+  margin-bottom: 1.2rem;
+}
+
+.work-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+  transition: transform 0.6s ease, filter 0.4s ease;
+  display: block;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 0.6s ease, filter 0.4s ease;
+}
+
+.work-thumb img[data-loaded="true"] {
+  opacity: 1;
+}
+
+.work-thumb:hover img {
+  transform: scale(1.04);
+  filter: saturate(1);
+}
+
+.work-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.work-name {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+.work-desc {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.work-meta {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--accent);
 }
 

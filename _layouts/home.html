@@ -5,19 +5,7 @@
   </head>
   <body>
 
-    <!-- HEADER -->
-    <header class="site-header">
-      <a href="/" class="nodeco">
-        <h1>Visewerk</h1>
-      </a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#work">Work</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+    {% include header.html %}
 
     <!-- HERO -->
     <div class="hero">
@@ -59,7 +47,6 @@
         <span>Traditional methods</span><span class="dot">·</span>
         <span>No machines</span><span class="dot">·</span>
         <span>Made to order</span><span class="dot">·</span>
-        <!-- duplicate for seamless loop -->
         <span>Hand-cut joinery</span><span class="dot">·</span>
         <span>Mortise &amp; tenon</span><span class="dot">·</span>
         <span>Hand planed surfaces</span><span class="dot">·</span>
@@ -69,20 +56,37 @@
       </div>
     </div>
 
+    <!-- WORK -->
+    <section class="section-work" id="work">
+      <div class="section-header">
+        <span class="section-label">Selected pieces</span>
+        <h2 class="section-title">The work</h2>
+      </div>
+
+      <div class="work-grid">
+        {% for piece in site.data.pieces %}
+        <div class="work-card">
+          <div class="work-thumb">
+            <img
+              src="{{ piece.image }}"
+              alt="{{ piece.title }}"
+              loading="lazy"
+            />
+          </div>
+          <div class="work-info">
+            <div>
+              <h3 class="work-name">{{ piece.title }}</h3>
+              <div class="work-desc">{{ piece.description | markdownify }}</div>
+            </div>
+            <span class="work-meta">{{ piece.material }} · {{ piece.year }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
     {% include footer.html %}
 
   </body>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("img").forEach((img) => {
-        if (img.complete) {
-          img.setAttribute("data-loaded", "true");
-        } else {
-          img.addEventListener("load", () => {
-            img.setAttribute("data-loaded", "true");
-          });
-        }
-      });
-    });
-  </script>
+  <script src="{{ '/assets/js/scripts.js' | relative_url }}" defer></script>
 </html>
