@@ -6,17 +6,42 @@
   src: url('/assets/fonts/goudy-bookletter-1911-v21-latin-regular.woff2') format('woff2');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&display=swap');
+
+:root {
+  --cream: #F4EFE6;
+  --warm-white: #FAF8F4;
+  --ink: #1C1814;
+  --muted: #7A7168;
+  --accent: #7C5C3A;
+  --rule: #DDD5C8;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html, body {
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  align-items: center;
+  background: var(--warm-white);
+  color: var(--ink);
   display: flex;
   flex-direction: column;
-  font-family: 'Goudy Bookletter 1911', serif;
-  justify-content: center;
+  font-family: 'Jost', 'Goudy Bookletter 1911', serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a.nodeco {
@@ -24,52 +49,382 @@ a.nodeco {
   text-decoration: none;
 }
 
-p {
-  color: #555;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  margin-bottom: 1.5rem;
-  text-align: center;
+/* ─── HEADER ─── */
+header, body > a.nodeco {
+  display: contents;
 }
 
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.2rem 3.5rem;
+}
+
+h1 {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0;
+}
+
+body > p, .site-tagline {
+  display: none; /* hidden — replaced by hero text */
+}
+
+/* ─── NAV ─── */
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.25s;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+.footer-link {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--ink); }
+
+/* ─── HERO ─── */
 .hero {
-  border-radius: 0.25rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  height: 500px;
-  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  min-height: 100vh;
   width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
   position: relative;
   overflow: hidden;
 }
 
-.hero img {
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 9rem 4rem 5rem 3.5rem;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.8rem;
+}
+
+.hero-title {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: clamp(3.2rem, 6vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1.06;
+  margin-bottom: 2.2rem;
+  color: var(--ink);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 1;
+  line-height: 1.85;
+  color: var(--muted);
+  max-width: 320px;
+  margin-bottom: 3.5rem;
+  text-align: left;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: .82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  transition: gap 0.3s;
+}
+.hero-cta::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--ink);
+  transition: width 0.3s;
+}
+.hero-cta:hover { gap: 1.5rem; }
+.hero-cta:hover::after { width: 55px; }
+
+.hero-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+  animation: fadeIn 1.4s ease 0.1s both;
+}
+
+.hero-image img {
   position: absolute;
-  transform: translate(-50%, -50%);
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  filter: saturate(0.85);
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  transform: none;
 }
 
-.hero img[data-loaded="true"] {
+.hero-image img[data-loaded="true"] {
   opacity: 1;
 }
 
-@media (max-width: 800px) {
-  .hero img {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 500px;
-    object-fit: cover;
-  }
+.hero-image-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(28, 24, 20, 0.45);
 }
 
-@media (min-width: 801px) {
-  .hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translateX(0);
+/* ─── MARQUEE ─── */
+.marquee-wrap {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+  padding: 1rem 0;
+  background: var(--cream);
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  white-space: nowrap;
+  animation: marquee 22s linear infinite;
+}
+
+.marquee-track span {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.marquee-track span.dot {
+  color: var(--accent);
+}
+
+/* ─── WORK SECTION ─── */
+.section-work {
+  padding: 7rem 3.5rem;
+  width: 100%;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.2rem;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-title {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 3rem;
+}
+
+.work-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.work-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-thumb {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--cream);
+  margin-bottom: 1.2rem;
+}
+
+.work-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+  transition: transform 0.6s ease, filter 0.4s ease;
+  display: block;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 0.6s ease, filter 0.4s ease;
+}
+
+.work-thumb img[data-loaded="true"] {
+  opacity: 1;
+}
+
+.work-thumb:hover img {
+  transform: scale(1.04);
+  filter: saturate(1);
+}
+
+.work-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.work-name {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+.work-desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.work-meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 3rem 3.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+footer p, footer {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-align: left;
+  margin-bottom: 0;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 800px) {
+  .site-header {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-text {
+    padding: 9rem 2rem 4rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .hero-image {
+    min-height: 60vw;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .hero-cta {
+    font-size: 0.75rem;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 2.5rem 2rem;
   }
 }
