@@ -4,23 +4,73 @@
     {% include head.html %}
   </head>
   <body>
-    {% include header.html %}
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <a href="/" class="nodeco">
+        <h1>Visewerk</h1>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO -->
     <div class="hero">
-      <img
-        src="/assets/images/hero_danish_1280.webp"
-        srcset="
-          /assets/images/hero_danish_640.webp   640w,
-          /assets/images/hero_danish_1280.webp 1280w,
-          /assets/images/hero_danish_1600.webp 1600w"
-        sizes="(max-width: 600px) 100vw,
-                (max-width: 1200px) 80vw,
-                1000px"
-        alt="Danish stool made out of poplar with black cord"
-        fetchpriority="high"
-        decoding="sync"
-      />
+      <div class="hero-text">
+        <p class="hero-eyebrow">Hand-Tool Woodworking</p>
+        <h2 class="hero-title">
+          Made by<br><em>hand,</em><br>built to last.
+        </h2>
+        <p class="hero-sub">
+          Furniture shaped without machines — only hand tools, raw material, and time. Each piece carries the marks of its making.
+        </p>
+        <a href="#work" class="hero-cta">View the work</a>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="/assets/images/hero_danish_1280.webp"
+          srcset="
+            /assets/images/hero_danish_640.webp   640w,
+            /assets/images/hero_danish_1280.webp 1280w,
+            /assets/images/hero_danish_1600.webp 1600w"
+          sizes="(max-width: 600px) 100vw,
+                 (max-width: 1200px) 80vw,
+                 1000px"
+          alt="Danish stool made out of poplar with black cord"
+          fetchpriority="high"
+          decoding="sync"
+        />
+        <p class="hero-image-caption">Danish stool — Poplar &amp; black cord</p>
+      </div>
     </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>Hand-cut joinery</span><span class="dot">·</span>
+        <span>Mortise &amp; tenon</span><span class="dot">·</span>
+        <span>Hand planed surfaces</span><span class="dot">·</span>
+        <span>Traditional methods</span><span class="dot">·</span>
+        <span>No machines</span><span class="dot">·</span>
+        <span>Made to order</span><span class="dot">·</span>
+        <!-- duplicate for seamless loop -->
+        <span>Hand-cut joinery</span><span class="dot">·</span>
+        <span>Mortise &amp; tenon</span><span class="dot">·</span>
+        <span>Hand planed surfaces</span><span class="dot">·</span>
+        <span>Traditional methods</span><span class="dot">·</span>
+        <span>No machines</span><span class="dot">·</span>
+        <span>Made to order</span><span class="dot">·</span>
+      </div>
+    </div>
+
     {% include footer.html %}
+
   </body>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
